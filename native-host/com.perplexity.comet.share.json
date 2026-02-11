@@ -1,0 +1,9 @@
+{
+  "name": "com.perplexity.comet.share",
+  "description": "Native messaging host for Perplexity Comet Share Extension",
+  "path": "/usr/local/bin/perplexity-comet-share-handler",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://YOUR_EXTENSION_ID_HERE/"
+  ]
+}
