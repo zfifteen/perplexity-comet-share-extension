@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perplexity Comet Share</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 320px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      padding: 16px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #333;
+    }
+    .header img { width: 32px; height: 32px; }
+    .header h1 { font-size: 16px; font-weight: 600; }
+    .section { margin-bottom: 14px; }
+    .section label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: #aaa;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      background: #2a2a3e;
+      color: #e0e0e0;
+      font-size: 13px;
+      outline: none;
+    }
+    input[type="text"]:focus { border-color: #6366f1; }
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+    }
+    .toggle-row span { font-size: 13px; }
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 22px;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #444;
+      border-radius: 22px;
+      transition: 0.3s;
+    }
+    .slider:before {
+      content: "";
+      position: absolute;
+      height: 16px; width: 16px;
+      left: 3px; bottom: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+    .toggle input:checked + .slider { background: #6366f1; }
+    .toggle input:checked + .slider:before { transform: translateX(18px); }
+    .share-btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #6366f1;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .share-btn:hover { background: #5558e6; }
+    .status {
+      font-size: 11px;
+      color: #22c55e;
+      text-align: center;
+      margin-top: 8px;
+      min-height: 16px;
+    }
+    .help {
+      font-size: 11px;
+      color: #888;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="icons/icon32.png" alt="icon">
+    <h1>Perplexity Comet Share</h1>
+  </div>
+
+  <div class="section">
+    <label>Prompt Template</label>
+    <input type="text" id="promptTemplate" placeholder="Analyze {url}">
+    <p class="help">Use {url} as placeholder for the shared URL</p>
+  </div>
+
+  <div class="section">
+    <div class="toggle-row">
+      <span>Auto-submit prompt</span>
+      <label class="toggle">
+        <input type="checkbox" id="autoSubmit">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-row">
+      <span>Open in new tab</span>
+      <label class="toggle">
+        <input type="checkbox" id="openInNewTab">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <button class="share-btn" id="shareCurrentPage">Share Current Page</button>
+  <div class="status" id="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
